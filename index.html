@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Heart Model</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@xrweb/ar@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <h2>Scan the QR Code to View the 3D Heart Model in AR</h2>
+    <button onclick="generateQRCode()">Generate QR</button>
+    <div id="qrcode"></div>
+    
+    <!-- AR Scene -->
+    <a-scene embedded xrweb>
+        <a-entity gltf-model="https://cdn.glitch.com/heart_model.glb" position="0 0 -3" scale="0.5 0.5 0.5"></a-entity>
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+        function generateQRCode() {
+            let hostedURL = "https://yourwebsite.com/ar-heart.html"; // Replace with actual hosted URL
+            document.getElementById("qrcode").innerHTML = "";
+            new QRCode(document.getElementById("qrcode"), hostedURL);
+        }
+    </script>
+</body>
+</html>
